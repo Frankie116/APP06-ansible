@@ -1,9 +1,11 @@
 ## ----------------------------------------------------------------------------
 ## version  2.0
-##  Project: APP05-wordpress-and-jumpboxes
-## Purpose: To create multiple wordpress servers on aws infrastructure using terraform.
-## Servers sit behind a loadbalancer.  Admin can ssh to server using a jumpbox in each AZ.
-## This project was initially created using TF03 template.
+## Project: APP06-ansible
+## Purpose: To create an ansible environment using terraform with master/slave hosts.  
+## This lab will be used to experiment with ansible configurations.
+
+## Admin can ssh to servers using a jumpbox in each AZ.
+## This project was initially created using APP05 as a template.
 
    Author:  Frank Effrim-Botchey
 ## ----------------------------------------------------------------------------

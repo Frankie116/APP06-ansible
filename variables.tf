@@ -98,8 +98,11 @@ variable my-instance-type {
   default     = "t2.micro"
 }
 
-variable my-servername {
-    default = "jenkins"
+variable my-master-name {
+    default = "ansible-master"
+}
+variable my-slave-name {
+    default = "ansible-slave"
 }
 
 # 02g-keypair.tf -------------------------------------------------------------
@@ -120,13 +123,13 @@ variable my-project-name {
 variable my-environment {
   description           = "Value of the 'Environment' tag."
   type                  = string
-  default               = "dev"
+  default               = "prod"
 }
 
 
 # 04b-sg-rules-server.tf -------------------------------------------------------------
 variable "my-port-app1" {
-  description           = "Port exposed by the docker image to redirect traffic to"
+  description           = "Application port exposed"
   default               = 80
 }
 
@@ -154,8 +157,20 @@ variable "my-lb-hosted-zone" {
 
 
 # 12a-route53ebs-snapshot.tf -----------------------------------------------------------
-variable "my-snapshot-name" {
+variable "my-snapshot-master" {
   type        = string
-  default     = "snapshot-default"
+  default     = "my-snap-ansible-master"
+}
 
+variable "my-snapshot-slave" {
+  type        = string
+  default     = "my-snap-ansible-slave"
+}
+
+variable "my-snapshot-name" {
+  type        = list(string)
+  default               = [
+    "my-snap-ansible-master",
+    "my-snap-ansible-slave"
+  ]
 }

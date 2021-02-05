@@ -17,11 +17,12 @@
 
 
 locals {
-  instance-count              = var.my-instances-per-subnet * length(module.my-vpc.private_subnets)
+  master-count                = 1
+  slave-count                 = var.my-instances-per-subnet * length(module.my-vpc.private_subnets)
 }
 
-resource "aws_instance" "my-server" {
-  count                       = local.instance-count
+resource "aws_instance" "my-ansible-master" {
+  count                       = local.master-count
   ami                         = aws_ami.my-ami-snapshot.id
   instance_type               = var.my-instance-type
   subnet_id                   = module.my-vpc.private_subnets[count.index % length(module.my-vpc.private_subnets)]
@@ -29,7 +30,23 @@ resource "aws_instance" "my-server" {
   key_name                    = var.my-private-key
   associate_public_ip_address = false
   tags                        = {
-    Name                      = "${var.my-servername}-0${count.index+1}" 
+    Name                      = "${var.my-master-name}-0${count.index}" 
+    Project                   = var.my-project-name
+    Environment               = var.my-environment
+    Terraform                 = "true"
+  }
+}
+
+resource "aws_instance" "my-ansible-slave" {
+  count                       = local.slave-count
+  ami                         = aws_ami.my-ami-snapshot.id
+  instance_type               = var.my-instance-type
+  subnet_id                   = module.my-vpc.private_subnets[count.index % length(module.my-vpc.private_subnets)]
+  vpc_security_group_ids      = [aws_security_group.my-sg-server.id]
+  key_name                    = var.my-private-key
+  associate_public_ip_address = false
+  tags                        = {
+    Name                      = "${var.my-slave-name}-0${count.index+1}" 
     Project                   = var.my-project-name
     Environment               = var.my-environment
     Terraform                 = "true"
