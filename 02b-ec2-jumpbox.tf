@@ -15,7 +15,8 @@
 
 
 locals {
-  jumpbox-count               = length(module.my-vpc.private_subnets)
+  jumpbox-count               = 1
+# jumpbox-count               = length(module.my-vpc.private_subnets)
 }
 
 resource "aws_instance" "my-jumpbox" {
