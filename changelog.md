@@ -4,3 +4,6 @@ Initial code generated from template: https://github.com/Frankie116/
 APP05-wordpress-lb
 
 
+Changelog-002
+refactored code
+updated readme
