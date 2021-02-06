@@ -9,23 +9,15 @@
 
 
 # 06b-route53-record-lb.tf ----------------------------------------------------------
-output my-http-website-address {
+output my-website-address {
   description  = "Full website addresss including port number"
-  value        = " http://${aws_route53_record.my-r53-record-lb.fqdn}"
+  value        = " ${aws_route53_record.my-r53-record-lb.fqdn}"
 }
 
-output my-https-website-address {
-  description  = "Full website addresss including port number"
-  value        = "https://${aws_route53_record.my-r53-record-lb.fqdn}"
-}
 
-output my-https-admin-address {
-  description  = "Full website addresss including port number"
-  value        = "  https://${aws_route53_record.my-r53-record-lb.fqdn}/wp-admin/"
-}
 
 output ssh-server-details {
-  value        = " ssh bitnami@${aws_instance.my-server[0].private_ip}"
+  value        = " ssh ubuntu@${aws_instance.my-server[0].private_ip}"
 }
 
 

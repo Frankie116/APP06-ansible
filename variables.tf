@@ -55,7 +55,6 @@ variable my-priv-subnet-cidr-blocks {
   ]
 }
 
-
 variable my-pub-subnets-per-vpc {
   description           = "Number of public subnets. Maximum of 16."
   type                  = number
@@ -85,7 +84,7 @@ variable my-pub-subnet-cidr-blocks {
   ]
 }
 
-# 2a-ec2-snapshot.tf -------------------------------------------------------------
+# 2a-ec2-ami.tf -------------------------------------------------------------
 variable my-instances-per-subnet {
   description = "Number of EC2 instances in each private subnet"
   type = number
@@ -98,9 +97,23 @@ variable my-instance-type {
   default     = "t2.micro"
 }
 
-variable my-servername {
-    default = "jenkins"
+variable my-master-name {
+    default = "my-ansible-master"
 }
+
+variable my-server-name {
+    default = "my-ansible-slave"
+}
+
+variable my-ami-master {
+    default = "ami-048a0f9a1baf4cbf3"
+}
+
+variable my-ami-slave {
+    default = "ami-0ba0395f0281ca12e"
+}
+
+
 
 # 02g-keypair.tf -------------------------------------------------------------
 variable "my-private-key" {
@@ -120,13 +133,13 @@ variable my-project-name {
 variable my-environment {
   description           = "Value of the 'Environment' tag."
   type                  = string
-  default               = "dev"
+  default               = "prod"
 }
 
 
 # 04b-sg-rules-server.tf -------------------------------------------------------------
 variable "my-port-app1" {
-  description           = "Port exposed by the docker image to redirect traffic to"
+  description           = "Application port exposed"
   default               = 80
 }
 
@@ -154,8 +167,20 @@ variable "my-lb-hosted-zone" {
 
 
 # 12a-route53ebs-snapshot.tf -----------------------------------------------------------
-variable "my-snapshot-name" {
-  type        = string
-  default     = "snapshot-default"
-
+variable "my-snapshot-master" {
+  type                  = string
+  default               = "my-snap-ansible-master"
 }
+
+variable "my-snapshot-slave" {
+  type                  = string
+  default               = "my-snap-ansible-slave"
+}
+
+# variable "my-snapshot-name" {
+#   type                  = list(string)
+#   default               = [
+#     "my-snap-ansible-master",
+#     "my-snap-ansible-slave"
+#   ]
+# }

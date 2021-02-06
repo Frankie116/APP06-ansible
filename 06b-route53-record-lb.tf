@@ -13,7 +13,7 @@
 
 resource "aws_route53_record" "my-r53-record-lb" {
   zone_id                    = data.aws_route53_zone.my-r53zone.zone_id
-  name                       = "${var.my-servername}.${data.aws_route53_zone.my-r53zone.name}"
+  name                       = "${var.my-server-name}.${data.aws_route53_zone.my-r53zone.name}"
   type                       = "A"
   alias {
       zone_id                = var.my-lb-hosted-zone        
