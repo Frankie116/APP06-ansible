@@ -1,11 +1,10 @@
 ## ----------------------------------------------------------------------------
 ## version  2.0
-## Project: APP06-ansible
+## Project: APP06-ansible (Public server branch)
 ## Purpose: To create an Ansible environment using terraform with master/slave servers.  
 ## This lab will be used to experiment with ansible configurations.
-
-## Admin can ssh to servers using a jumpbox in each AZ.
-## Jumpbox servers are in public subnet and Ansible Master & Slaves are in Private Subnet
+## Ansible servers have been moved to a public subnet to enable visual code to connect to them easier.
+## (It as a bit tricky to connect to them via a jumpbox using visual code.)
 ## This project was initially created using APP05 as a template.
 
    Author:  Frank Effrim-Botchey
