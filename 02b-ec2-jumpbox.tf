@@ -14,8 +14,10 @@
 # variables.tf          - var.my-environment
 
 
+
+
 locals {
-  jumpbox-count               = 1
+  jumpbox-count               = 0
 # jumpbox-count               = length(module.my-vpc.private_subnets)
 }
 

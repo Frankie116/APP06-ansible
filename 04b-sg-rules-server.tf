@@ -17,8 +17,8 @@ resource "aws_security_group_rule" "my-sg-irule-server1" {
   protocol                 = "tcp"
   from_port                = var.my-port-app1
   to_port                  = var.my-port-app1
-  # cidr_blocks            = ["0.0.0.0/0"]
-  source_security_group_id = aws_security_group.my-sg-lb.id
+  cidr_blocks            = ["0.0.0.0/0"]
+  # source_security_group_id = aws_security_group.my-sg-lb.id
   depends_on = [aws_security_group.my-sg-server, aws_security_group.my-sg-lb]
 }
 
@@ -29,8 +29,8 @@ resource "aws_security_group_rule" "my-sg-irule-server2" {
   protocol                 = "tcp"
   from_port                = 22
   to_port                  = 22
-  # cidr_blocks            = ["0.0.0.0/0"]
-  source_security_group_id = aws_security_group.my-sg-jumpbox.id
+  cidr_blocks            = ["0.0.0.0/0"]
+  # source_security_group_id = aws_security_group.my-sg-jumpbox.id
   depends_on = [aws_security_group.my-sg-server, aws_security_group.my-sg-jumpbox]
 }
 
