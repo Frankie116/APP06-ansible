@@ -14,7 +14,7 @@
 resource "aws_route53_record" "my-r53-record-ansible-master" {
   count                = local.master-count
   zone_id              = data.aws_route53_zone.my-r53zone.zone_id
-  name                 = "my-ansible-master-0${count.index+1}.${data.aws_route53_zone.my-r53zone.name}"
+  name                 = "my-ansible-master23-0${count.index+1}.${data.aws_route53_zone.my-r53zone.name}"
   type                 = "A"
   ttl                  = "300"
   records              = [aws_instance.my-ansible-master[count.index].public_ip]

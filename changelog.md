@@ -25,3 +25,18 @@ Changelog-003
     06d-route53-record-ansible.tf
     06d-route53-record-lb.tf
     06d-route53-record-server.tf
+
+Changelog-004
+        deleted:    06d-route53-record-ansible.tf
+        deleted:    06d-route53-record-jumpbox.tf
+        deleted:    06d-route53-record-lb.tf
+        deleted:    06d-route53-record-server.tf
+        modified:   outputs.tf
+
+        Untracked files:
+        06b-route53-record-ansible.tf
+        06b-route53-record-jumpbox.tf
+        06b-route53-record-lb.tf
+        06b-route53-record-server.tf
+        ansible/
+

@@ -43,7 +43,7 @@ output ssh-jumpbox-details {
 }
 
 output ssh-ansible-master-details {
-  value        = "ssh -A ubuntu@my-ansible-master-01.${var.my-existing-r53-zone} -i ${var.my-private-key}.pem"
+  value        = "ssh -A ubuntu@my-ansible-master23-01.${var.my-existing-r53-zone} -i ${var.my-private-key}.pem"
 }
 
 output ssh-server-details {
